@@ -18,13 +18,25 @@ echo "$className;format="decap"$.title = $className;format="decap"$" >> ../conf/
 echo "$className;format="decap"$.heading = $className;format="decap"$" >> ../conf/messages.en
 echo "$className;format="decap"$.$field1Name$ = $field1Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.$field2Name$ = $field2Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field3Name$ = $field3Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field4Name$ = $field4Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field5Name$ = $field5Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.checkYourAnswersLabel = $className$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field1Name$.required = Enter $field1Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field2Name$.required = Enter $field2Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field3Name$.required = Enter $field3Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field4Name$.required = Enter $field4Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field5Name$.required = Enter $field5Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field1Name$.length = $field1Name$ must be $field1MaxLength$ characters or less" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field2Name$.length = $field2Name$ must be $field2MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field2Name$.length = $field3Name$ must be $field3MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field2Name$.length = $field4Name$ must be $field4MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field2Name$.length = $field5Name$ must be $field5MaxLength$ characters or less" >> ../conf/messages.en
 echo "$className;format="decap"$.$field1Name$.change.hidden = $field1Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.$field2Name$.change.hidden = $field2Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field3Name$.change.hidden = $field3Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field4Name$.change.hidden = $field4Name$" >> ../conf/messages.en
+echo "$className;format="decap"$.$field5Name$.change.hidden = $field5Name$" >> ../conf/messages.en
 
 echo "Adding to UserAnswersEntryGenerators"
 awk '/trait UserAnswersEntryGenerators/ {\
@@ -56,7 +68,10 @@ awk '/trait ModelGenerators/ {\
     print "      for {";\
     print "        $field1Name$ <- arbitrary[String]";\
     print "        $field2Name$ <- arbitrary[String]";\
-    print "      } yield $className$($field1Name$, $field2Name$)";\
+    print "        $field3Name$ <- arbitrary[String]";\
+    print "        $field4Name$ <- arbitrary[String]";\
+    print "        $field5Name$ <- arbitrary[String]";\
+    print "      } yield $className$($field1Name$, $field2Name$, $field3Name$, $field4Name$, $field5Name$)";\
     print "    }";\
     next }1' ../test-utils/generators/ModelGenerators.scala > tmp && mv tmp ../test-utils/generators/ModelGenerators.scala
 
