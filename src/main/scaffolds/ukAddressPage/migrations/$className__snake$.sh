@@ -29,9 +29,9 @@ echo "$className;format="decap"$.error.$field4Name$.required = Enter $field4Name
 echo "$className;format="decap"$.error.$field5Name$.required = Enter $field5Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field1Name$.length = $field1Name$ must be $field1MaxLength$ characters or less" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field2Name$.length = $field2Name$ must be $field2MaxLength$ characters or less" >> ../conf/messages.en
-echo "$className;format="decap"$.error.$field2Name$.length = $field3Name$ must be $field3MaxLength$ characters or less" >> ../conf/messages.en
-echo "$className;format="decap"$.error.$field2Name$.length = $field4Name$ must be $field4MaxLength$ characters or less" >> ../conf/messages.en
-echo "$className;format="decap"$.error.$field2Name$.length = $field5Name$ must be $field5MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field3Name$.length = $field3Name$ must be $field3MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field4Name$.length = $field4Name$ must be $field4MaxLength$ characters or less" >> ../conf/messages.en
+echo "$className;format="decap"$.error.$field5Name$.length = $field5Name$ must be $field5MaxLength$ characters or less" >> ../conf/messages.en
 echo "$className;format="decap"$.$field1Name$.change.hidden = $field1Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.$field2Name$.change.hidden = $field2Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.$field3Name$.change.hidden = $field3Name$" >> ../conf/messages.en
