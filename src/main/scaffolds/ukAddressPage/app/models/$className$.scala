@@ -1,13 +1,6 @@
 package models
 
-//case class $className$ ($field1Name$: String, $field2Name$: String)
-//
-//object $className$ {
-//  implicit val format = Json.format[$className$]
-//}
-
-//sealed trait Address
-
+import play.api.libs.json._
 
 case class $className$(
                         $field1Name$: String,//line1
@@ -16,19 +9,6 @@ case class $className$(
                         $field4Name$: Option[String],//country
                         $field5Name$: String//postCode
                     )  {
-
-//  def reads: Reads[Address] =
-//    UkAddress.reads.widen[Address] orElse
-//      InternationalAddress.format.widen[Address] orElse
-//      DesAddress.format.widen[Address]
-//
-//  def writes: Writes[Address] = Writes {
-//    case u: UkAddress            => Json.toJson(u)(UkAddress.writes)
-//    case d: DesAddress           => Json.toJson(d)(DesAddress.format)
-//    case i: InternationalAddress => Json.toJson(i)(InternationalAddress.format)
-//  }
-
-//  implicit def format: Format[Address] = Format(reads, writes)
 
   implicit val format = Json.format[$className$]
   val country: Country = Country("GB", "United Kingdom")

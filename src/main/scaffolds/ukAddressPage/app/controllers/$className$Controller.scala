@@ -2,14 +2,17 @@ package controllers
 
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
+import controllers.actions._
+import forms.$className$FormProvider
+import models.Mode
+import navigation.Navigator
+import pages.$className$Page
+import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import repositories.SessionRepository
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendBaseController
+import views.html.$className$View
 
-//class UkAddressController @Inject()(
-//                                     override val messagesApi: MessagesApi,
-//                                     cc: AuthenticatedControllerComponents,//sessionRepository,identify,getData,requireData,MessagesControllerComponents are contained in this class
-//                                     formProvider: $className$FormProvider,//UkAddressFormProvider,
-//                                     view: $className$View//UkAddressView
-//                                   )(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport {
-//}
 class $className$Controller @Inject()(
                                       override val messagesApi: MessagesApi,
                                       sessionRepository: SessionRepository,
