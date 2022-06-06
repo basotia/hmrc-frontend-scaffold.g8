@@ -1,6 +1,13 @@
 package models
 
+import play.api.libs.json._
 import scala.annotation.tailrec
+import utils.ModelHelpers._
+
+case class Country(code: String, name: String)
+object Country {
+  implicit val format: OFormat[Country] = Json.format[Country]
+}
 
 case class $className$(
                         $field1Name$: String,//line1
