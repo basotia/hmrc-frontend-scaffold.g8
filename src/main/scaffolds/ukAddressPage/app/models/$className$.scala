@@ -1,6 +1,6 @@
 package models
 
-import play.api.libs.json._
+import scala.annotation.tailrec
 
 case class $className$(
                         $field1Name$: String,//line1
@@ -17,7 +17,7 @@ case class $className$(
              line2: Option[String],
              townOrCity: String,
              county: Option[String],
-             postCode: String): UkAddress = new UkAddress(normaliseSpaces(line1),
+             postCode: String): $className$ = new $className$(normaliseSpaces(line1),
     normaliseSpaces(line2),
     normaliseSpaces(townOrCity),
     normaliseSpaces(county),
@@ -25,8 +25,8 @@ case class $className$(
 
 }
 
-object UkAddress {
-  implicit val reads: Reads[UkAddress] = {
+object $className$ {
+  implicit val reads: Reads[$className$] = {
 
     import play.api.libs.functional.syntax._
 
@@ -40,13 +40,13 @@ object UkAddress {
           (__ \ "townOrCity").read[String].map(normaliseSpaces) and
           (__ \ "county").readNullable[String].map(normaliseSpaces) and
           (__ \ "postCode").read[String].map(normaliseSpaces)
-        )(UkAddress(_, _, _, _, _)
+        )($className$(_, _, _, _, _)
       ))
   }
 
-  implicit val writes: OWrites[UkAddress] = new OWrites[UkAddress] {
+  implicit val writes: OWrites[$className$] = new OWrites[$className$] {
 
-    override def writes(o: UkAddress): JsObject = {
+    override def writes(o: $className$): JsObject = {
       val line2Obj = o.line2.map(x => Json.obj("line2" -> x)).getOrElse(Json.obj())
       val countyObj = o.county.map(x => Json.obj("county" -> x)).getOrElse(Json.obj())
 
@@ -58,4 +58,21 @@ object UkAddress {
       ) ++ line2Obj ++ countyObj
     }
   }
+
+
+  def normaliseSpaces(string: String): String = {
+
+    @tailrec
+    def removeDoubleSpaces(string: String): String = {
+      if(!string.contains("  ")) {
+        string
+      } else {
+        removeDoubleSpaces(string.replaceAll("[ ]{2}", " "))
+      }
+    }
+
+    removeDoubleSpaces(string.trim)
+  }
+
+  def normaliseSpaces(string: Option[String]): Option[String] = string.map(normaliseSpaces)
 }
