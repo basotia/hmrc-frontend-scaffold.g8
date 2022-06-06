@@ -42,11 +42,11 @@ object $className$ {
         if (t == "GB") Reads(_ => JsSuccess(t)) else Reads(_ => JsError("countryCode must be GB"))
     }.andKeep(
       (
-        (__ \ $field1Name$).read[String].map(normaliseSpaces) and
-          (__ \ $field2Name$).readNullable[String].map(normaliseSpaces) and
-          (__ \ $field3Name$).read[String].map(normaliseSpaces) and
-          (__ \ $field4Name$).readNullable[String].map(normaliseSpaces) and
-          (__ \ $field5Name$).read[String].map(normaliseSpaces)
+        (__ \ s""""$field1Name$"""").read[String].map(normaliseSpaces) and
+          (__ \ s""""$field2Name$"""").readNullable[String].map(normaliseSpaces) and
+          (__ \ s""""$field3Name$"""").read[String].map(normaliseSpaces) and
+          (__ \ s""""$field4Name$"""").readNullable[String].map(normaliseSpaces) and
+          (__ \ s""""$field5Name$"""").read[String].map(normaliseSpaces)
         )($className$(_, _, _, _, _)
       ))
   }
@@ -54,14 +54,14 @@ object $className$ {
   implicit val writes: OWrites[$className$] = new OWrites[$className$] {
 
     override def writes(o: $className$): JsObject = {
-      val line2Obj = o.$field2Name$.map(x => Json.obj($field2Name$ -> x)).getOrElse(Json.obj())
-      val countyObj = o.$field4Name$.map(x => Json.obj($field4Name$ -> x)).getOrElse(Json.obj())
+      val line2Obj = o.$field2Name$.map(x => Json.obj(s""""$field2Name$"""" -> x)).getOrElse(Json.obj())
+      val countyObj = o.$field4Name$.map(x => Json.obj(s""""$field4Name$"""" -> x)).getOrElse(Json.obj())
 
       Json.obj(
-        $field1Name$ -> o.$field1Name$,
-        $field3Name$ -> o.$field3Name$,
+        s""""$field1Name$"""" -> o.$field1Name$,
+        s""""$field3Name$"""" -> o.$field3Name$,
         "country" -> o.country,
-        $field5Name$ -> o.$field5Name$
+      s""""$field5Name$"""" -> o.$field5Name$
       ) ++ line2Obj ++ countyObj
     }
   }
