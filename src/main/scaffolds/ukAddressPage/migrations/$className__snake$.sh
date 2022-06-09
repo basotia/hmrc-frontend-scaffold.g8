@@ -71,7 +71,7 @@ awk '/trait ModelGenerators/ {\
     print "        $field3Name$ <- arbitrary[String]";\
     print "        $field4Name$ <- arbitrary[String]";\
     print "        $field5Name$ <- arbitrary[String]";\
-    print "      } yield $className$($field1Name$, $field2Name$, $field3Name$, $field4Name$, $field5Name$)";\
+    print "      } yield $className$($field1Name$, Some($field2Name$), $field3Name$, Some($field4Name$), $field5Name$)";\
     print "    }";\
     next }1' ../test-utils/generators/ModelGenerators.scala > tmp && mv tmp ../test-utils/generators/ModelGenerators.scala
 
