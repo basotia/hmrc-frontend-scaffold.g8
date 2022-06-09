@@ -16,16 +16,22 @@ import play.api.test.Helpers._
 import repositories.SessionRepository
 import views.html.$className$View
 
+import java.time.Instant
 import scala.concurrent.Future
 
 class $className$ControllerSpec extends SpecBase with MockitoSugar {
 
-  def onwardRoute = Call("GET", "/foo")
+  private val formProvider = new $className$FormProvider()
+  private val form = formProvider()
 
-  val formProvider = new $className$FormProvider()
-  val form = formProvider()
+  private lazy val $className;format="decap"$Route = routes.$className$Controller.onPageLoad(NormalMode).url
+  private val arbitraryInstant = Instant.now()
 
-  lazy val $className;format="decap"$Route = routes.$className$Controller.onPageLoad(NormalMode).url
+  private val address = $className$("value 1", Some("value 2"), "value 3", Some("value 4"), "AA11 1AA")
+  override val emptyUserAnswers: UserAnswers = UserAnswers(userAnswersId, lastUpdated = arbitraryInstant)
+  private val basicUserAnswers: UserAnswers = emptyUserAnswers.set($className$Page, address).success.value
+
+ def onwardRoute = Call("GET", "/foo")
 
   val userAnswers = UserAnswers(
     userAnswersId,
@@ -42,7 +48,6 @@ class $className$ControllerSpec extends SpecBase with MockitoSugar {
     "must return OK and the correct view for a GET" in {
 
       val application = applicationBuilder(userAnswers = Some(emptyUserAnswers)).build()
-
       running(application) {
         val request = FakeRequest(GET, $className;format="decap"$Route)
 
@@ -67,7 +72,7 @@ class $className$ControllerSpec extends SpecBase with MockitoSugar {
         val result = route(application, request).value
 
         status(result) mustEqual OK
-        contentAsString(result) mustEqual view(form.fill($className$("value 1", "value 2")), NormalMode)(request, messages(application)).toString
+        contentAsString(result) mustEqual view(form.fill($className$("value 1", Some("value 2"),"value 3",Some("value 4"),"AA11 1AA")), NormalMode)(request, messages(application)).toString
       }
     }
 
@@ -88,7 +93,8 @@ class $className$ControllerSpec extends SpecBase with MockitoSugar {
       running(application) {
         val request =
           FakeRequest(POST, $className;format="decap"$Route)
-            .withFormUrlEncodedBody(("$field1Name$", "value 1"), ("$field2Name$", "value 2"))
+            .withFormUrlEncodedBody(("firstLine", "value 1"), ("secondLine", "value 2"),("townCity","value 3"),
+              ("county","value 4"),("postcode","AA11 1AA"))
 
         val result = route(application, request).value
 
@@ -138,7 +144,8 @@ class $className$ControllerSpec extends SpecBase with MockitoSugar {
       running(application) {
         val request =
           FakeRequest(POST, $className;format="decap"$Route)
-            .withFormUrlEncodedBody(("$field1Name$", "value 1"), ("$field2Name$", "value 2"))
+            .withFormUrlEncodedBody(("firstLine", "value 1"), ("secondLine", "value 2"),("townCity","value 3"),
+              ("county","value 4"),("postcode","AA11 1AA"))
 
         val result = route(application, request).value
 
