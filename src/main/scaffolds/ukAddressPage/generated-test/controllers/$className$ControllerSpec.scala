@@ -29,19 +29,9 @@ class $className$ControllerSpec extends SpecBase with MockitoSugar {
 
   private val address = $className$("value 1", Some("value 2"), "value 3", Some("value 4"), "AA11 1AA")
   override val emptyUserAnswers: UserAnswers = UserAnswers(userAnswersId, lastUpdated = arbitraryInstant)
-  private val basicUserAnswers: UserAnswers = emptyUserAnswers.set($className$Page, address).success.value
+  private val userAnswers: UserAnswers = emptyUserAnswers.set($className$Page, address).success.value
 
  def onwardRoute = Call("GET", "/foo")
-
-  val userAnswers = UserAnswers(
-    userAnswersId,
-    Json.obj(
-      $className$Page.toString -> Json.obj(
-        "$field1Name$" -> "value 1",
-        "$field2Name$" -> "value 2"
-      )
-    )
-  )
 
   "$className$ Controller" - {
 
