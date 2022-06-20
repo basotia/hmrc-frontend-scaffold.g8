@@ -1,6 +1,6 @@
 package forms
 
-import forms.behaviours.StringFieldBehaviours
+import forms.behaviours.{StringFieldBehaviours,OptionFieldBehaviours}
 import play.api.data.FormError
 
 class $className$FormProviderSpec extends StringFieldBehaviours {
@@ -54,10 +54,9 @@ class $className$FormProviderSpec extends StringFieldBehaviours {
       lengthError = FormError(fieldName, lengthKey, Seq(maxLength))
     )
 
-    behave like mandatoryField(
+    behave like optionalField(
       form,
-      fieldName,
-      requiredError = FormError(fieldName, requiredKey)
+      fieldName
     )
   }
 }
