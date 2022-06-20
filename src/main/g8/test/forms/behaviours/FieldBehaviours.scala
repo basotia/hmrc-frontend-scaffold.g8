@@ -1,10 +1,7 @@
 package forms.behaviours
 
-import forms.FormSpec
-import generators.Generators
 import org.scalacheck.Gen
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import play.api.data.{Form, FormError}
 
 trait FieldBehaviours extends FormSpec with ScalaCheckPropertyChecks with Generators {
 
@@ -37,6 +34,17 @@ trait FieldBehaviours extends FormSpec with ScalaCheckPropertyChecks with Genera
 
       val result = form.bind(Map(fieldName -> "")).apply(fieldName)
       result.errors mustEqual Seq(requiredError)
+    }
+  }
+
+  def optionalField(form: Form[_],
+                    fieldName: String): Unit = {
+
+    "not bind when key is optional" in {
+
+      val result = form.bind(emptyForm).apply(fieldName)
+      result.value mustBe None
+      result.errors mustBe empty
     }
   }
 }
