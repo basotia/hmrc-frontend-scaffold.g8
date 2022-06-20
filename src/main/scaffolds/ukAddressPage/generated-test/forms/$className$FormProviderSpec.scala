@@ -1,6 +1,6 @@
 package forms
 
-import forms.behaviours.{StringFieldBehaviours,OptionFieldBehaviours}
+import forms.behaviours.StringFieldBehaviours
 import play.api.data.FormError
 
 class $className$FormProviderSpec extends StringFieldBehaviours {
@@ -37,7 +37,6 @@ class $className$FormProviderSpec extends StringFieldBehaviours {
   ".$field2Name$" - {
 
     val fieldName = "$field2Name$"
-    val requiredKey = "$className;format="decap"$.error.$field2Name$.required"
     val lengthKey = "$className;format="decap"$.error.$field2Name$.length"
     val maxLength = $field2MaxLength$
 

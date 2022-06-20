@@ -11,7 +11,6 @@ import play.api.test.Helpers._
 import views.html.$className$View
 
 import java.time.Instant
-import scala.concurrent.Future
 
 class $className$ControllerSpec extends SpecBase with MockitoSugar {
 
