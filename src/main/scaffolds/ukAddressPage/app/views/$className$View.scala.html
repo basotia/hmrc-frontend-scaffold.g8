@@ -25,7 +25,6 @@
                 field = form("$field1Name$"),
                 label = LabelViewModel(messages("$className;format="decap"$.$field1Name$"))
             )
-            .withWidth(Full)
         )
 
         @govukInput(
@@ -33,7 +32,6 @@
                 field = form("$field2Name$"),
                 label = LabelViewModel(messages("$className;format="decap"$.$field2Name$"))
             )
-            .withWidth(Full)
         )
 
         @govukInput(
@@ -41,7 +39,7 @@
                 field = form("$field3Name$"),
                 label = LabelViewModel(messages("$className;format="decap"$.$field3Name$"))
             )
-            .withWidth(Full)
+            .withWidth(TwoThirds)
         )
 
         @govukInput(
@@ -49,7 +47,7 @@
                 field = form("$field4Name$"),
                 label = LabelViewModel(messages("$className;format="decap"$.$field4Name$"))
             )
-            .withWidth(Full)
+            .withWidth(TwoThirds)
         )
 
         @govukInput(
@@ -57,7 +55,7 @@
                 field = form("$field5Name$"),
                 label = LabelViewModel(messages("$className;format="decap"$.$field5Name$"))
             )
-            .withWidth(Full)
+            .withWidth(Fixed10)
         )
 
         @govukButton(
