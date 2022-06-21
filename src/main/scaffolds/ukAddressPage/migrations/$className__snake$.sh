@@ -23,9 +23,7 @@ echo "$className;format="decap"$.$field4Name$ = $field4Name$" >> ../conf/message
 echo "$className;format="decap"$.$field5Name$ = $field5Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.checkYourAnswersLabel = $className$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field1Name$.required = Enter $field1Name$" >> ../conf/messages.en
-echo "$className;format="decap"$.error.$field2Name$.required = Enter $field2Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field3Name$.required = Enter $field3Name$" >> ../conf/messages.en
-echo "$className;format="decap"$.error.$field4Name$.required = Enter $field4Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field5Name$.required = Enter $field5Name$" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field1Name$.length = $field1Name$ must be $field1MaxLength$ characters or less" >> ../conf/messages.en
 echo "$className;format="decap"$.error.$field2Name$.length = $field2Name$ must be $field2MaxLength$ characters or less" >> ../conf/messages.en
